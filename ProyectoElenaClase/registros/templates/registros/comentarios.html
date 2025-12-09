@@ -1,0 +1,40 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Comentarios{% endblock %}
+{% block imagen %}
+    {%load static%}
+    {%static 'inicio/images/home.png'%}
+{%endblock%}
+
+{% block sidebar_info %}
+    Comentarios<span>DSM</span>
+{% endblock %}
+{% block tituloPagina %}Comentarios{% endblock %}
+{% block subtitulo %}Comentarios registrados:{% endblock %}
+
+{% block contenido %}
+<!-- Tabla de comentarios -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Mensaje</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+        {% for comentario in comentarios %}
+        <tr>
+            <td class="muted">{{ comentario.usuario }}</td>
+            <td class="text-semibold">{{ comentario.mensaje }}</td>
+            <td class="muted">
+                <a href="{% url 'ConsultaIndividual' comentario.id %}">Editar</a>
+            </td>
+            <td class="muted">
+                <a href="{% url 'Eliminar' comentario.id %}">Eliminar</a>
+            </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{% endblock %}
