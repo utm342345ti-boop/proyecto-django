@@ -1,2 +1,0 @@
-# proyecto-django
-prueba
